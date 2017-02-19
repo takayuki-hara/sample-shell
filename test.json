@@ -1,0 +1,25 @@
+{
+  "component": {
+    "id": "1256973b-6a3a-4064-8b74-3d492af5ec69",
+    "key": "mysql:client/auth_utils.h",
+    "name": "auth_utils.h",
+    "qualifier": "FIL",
+    "path": "client/auth_utils.h",
+    "language": "c"
+  },
+  "ancestors": [
+    {
+      "id": "0883b6bc-23da-42de-b8ad-9ef098923a90",
+      "key": "mysql:client",
+      "name": "client",
+      "qualifier": "DIR",
+      "path": "client"
+    },
+    {
+      "id": "fced9973-bf74-4f76-a267-f3eab1c4a4de",
+      "key": "mysql",
+      "name": "MySQL",
+      "qualifier": "TRK"
+    }
+  ]
+}
