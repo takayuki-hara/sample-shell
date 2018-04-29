@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 # 参考：
@@ -29,7 +28,7 @@ exit 1
 # -----------------------------------------------------------------------------
 
 # CLIENT_ID/CLIENT_SECRET は GoogleDeveloperConsle にて作成したものを使用する
-CLIENT_ID="277852333898-malab85hvq4fcl5551jqijnsbkdaonop.apps.googleusercontent.com"
+CLIENT_ID="xxxxxxxxx898-malab85hvq4fcl5551jqijnsbkdaonop.apps.googleusercontent.com"
 CLIENT_SECRET="8c74yGKXUt0V5hFlsZKoCNvh"
 
 # REDIRECT_URI/SCOPE は固定値
@@ -42,7 +41,7 @@ function code() {
 }
 
 # 運用中は保持する必要のない値
-AUTHORIZATION_CODE="4/WuZnYwu1p2XZlLinR7eXhjZmPJZ8XUqCVzQuAGu2K2k"
+AUTHORIZATION_CODE="4/WuZnYwu1p2XZlLinR7eXhjZmPJZ8XUqCVzQxxxxxxxx"
 
 # AUTHORIZATION_CODEからAccessToken/RefreshTokenを入手する
 function token() {
@@ -56,14 +55,14 @@ function token() {
 
 # Response:
 # {
-#   "access_token" : "ya29.Glv-A4xUBjEYjghap_XovN9Cgv77mo3uT02Mixq0cmQ5O2dgdwUERSL6YMDxsh0noBSKTbxdWatr4bqV-nm4sUGLbBhrNdqO4yWMrfaJ-PAUrXEPpL9ZszNVAvL4",
+#   "access_token" : "ya29.Glv-A4xUBjEYjghap_XovN9Cgv77mo3uT02Mixq0cmQ5O2dgdwUERSL6YMDxsh0noBSKTbxdWatr4bqV-nm4sUGLbBhrNdqO4yWMrfaJ-xxxxxxxxxxxxxxxxxx",
 #   "expires_in" : 3600,
 #   "refresh_token" : "1/PVwfwD-QvNg3GXUFzHXaJ_P7yHObWH5A70gONERpb-s",
 #   "token_type" : "Bearer"
 # }
 
 # これを運用時は覚えておく（これを元にAccessTokenを生成する）
-REFRESH_TOKEN="1/PVwfwD-QvNg3GXUFzHXaJ_P7yHObWH5A70gONERpb-s"
+REFRESH_TOKEN="1/PVwfwD-QvNg3GXUFzHXaJ_P7yHObWH5A7xxxxxxxx-s"
 
 # RefreshTokenからAccessTokenを得る
 function refresh() {
@@ -75,7 +74,7 @@ function refresh() {
 }
 
 # 変化するものなので注意
-ACCESS_TOKEN="ya29.Glz-A-DWe8T_VQ7qltVONUANov6CUBNpw8e2oIl7XH9gXh1ALTT81r-DSCAxmsIzn-KG36vn1NjDUXyYncoIaXjLeuUE5fz1C4iSHwYTAT0aBWGG_sTQ7YFI138sWw"
+ACCESS_TOKEN="ya29.Glz-A-DWe8T_VQ7qltVONUANov6CUBNpw8e2oIl7XH9gXh1ALTT81r-DSCAxmsIzn-KG36vn1NjDUXyYncoIaXjLeuUE5fz1C4iSHwYTAT0aBWGG_xxxxxxxxxxxxx"
 
 function check() {
     curl "https://www.googleapis.com/oauth2/v3/tokeninfo?access_token=$ACCESS_TOKEN"
@@ -92,12 +91,12 @@ function create_sheet() {
         -H "Content-length: 0"
 }
 
-SPREADSHEET_ID="1Vr2yvR1QMWM-73eNaxh9FwEb0L_j4QEvPtAPXSRnjDQ"
+SPREADSHEET_ID="1Vr2yvR1QMWM-73eNaxh9FwEb0L_j4QExxxxxxxxxxxx"
 
 function sheet() {
     # curl "https://sheets.googleapis.com/v4/spreadsheets/1R6gP99ML8bWfaRUZ-CkbbTkwxstJ7BgTxUIeZ9UyZFE/values/Sheet1!A1:D5&access_token=$ACCESS_TOKEN"
     curl -X POST https://sheets.googleapis.com/v4/spreadsheets/$SPREADSHEET_ID:batchUpdate \
-        -H "Authorization: Bearer ya29.Glv-AzfFqlIiqTc-ha1JsSAgFwB_d8V9fZ8M-dMNTYj539i0sfCt1GGpyPxVZbzKKRDrmE-q84n8SXXF019DrEpvkLWzfPnwV3mewS6f8u83cuSCgEXqA8jjdria" \
+        -H "Authorization: Bearer ya29.Glv-AzfFqlIiqTc-ha1JsSAgFwB_d8V9fZ8M-dMNTYj539i0sfCt1GGpyPxVZbzKKRDrmE-q84n8SXXF019DrEpvkLWzfPnwV3mewS6f8u83cuSCgExxxxxxxxxx" \
         -H "Accept: application/json" \
         -d "{\"requests\": [{\"updateCells\": {\"start\": {\"sheetId\": 0,\"rowIndex\": 0,\"columnIndex\": 0},\"rows\": [{\"values\": [{},{\"userEnteredValue\": {\"stringValue\": \"国語\"}},{\"userEnteredValue\": {\"stringValue\": \"算数\"}},{\"userEnteredValue\": {\"stringValue\": \"理科\"}},{\"userEnteredValue\": {\"stringValue\": \"合計\"}}],},{\"values\": [{\"userEnteredValue\": {\"stringValue\": \"A\"}},{\"userEnteredValue\": {\"numberValue\": \"80\"}},{\"userEnteredValue\": {\"numberValue\": \"70\"}},{\"userEnteredValue\": {\"numberValue\": \"60\"}},{\"userEnteredValue\": {\"formulaValue\": \"=SUM(B2:D2)\"}}]},{\"values\": [{\"userEnteredValue\": {\"stringValue\": \"B\"}},{\"userEnteredValue\": {\"numberValue\": \"90\"}},{\"userEnteredValue\": {\"numberValue\": \"40\"}},{\"userEnteredValue\": {\"numberValue\": \"50\"}},{\"userEnteredValue\": {\"formulaValue\": \"=SUM(B3:D3)\"}}]},{\"values\": [{\"userEnteredValue\": {\"stringValue\": \"C\"}},{\"userEnteredValue\": {\"numberValue\": \"30\"}},{\"userEnteredValue\": {\"numberValue\": \"90\"}},{\"userEnteredValue\": {\"numberValue\": \"70\"}},{\"userEnteredValue\": {\"formulaValue\": \"=SUM(B4:D4)\"}}]}],\"fields\": \"userEnteredValue\"}}]}"
 }
